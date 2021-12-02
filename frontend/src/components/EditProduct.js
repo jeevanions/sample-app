@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
- 
+import configData from "../frontend.config.json";
+
 const EditProduct = () => {
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -11,7 +12,7 @@ const EditProduct = () => {
  
     const updateProduct = async (e) => {
         e.preventDefault();
-        await axios.patch(`http://127.0.0.1:8001/products/${id}`,{
+        await axios.patch(configData.API_BASE_URL + `/products/${id}`,{
             title: title,
             price: price
         });

@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
- 
+import configData from "../frontend.config.json";
+
 const AddProduct = () => {
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
-    const history = useNavigate();
+    const navigate = useNavigate();
  
     const saveProduct = async (e) => {
         e.preventDefault();
-        await axios.post('http://127.0.0.1:8001/products',{
+        await axios.post(configData.API_BASE_URL + '/products',{
             title: title,
             price: price
         });
-        history.push("/");
+        navigate("/");
     }
  
     return (

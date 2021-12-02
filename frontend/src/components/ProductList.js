@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import { Link } from "react-router-dom";
- 
+import configData from "../frontend.config.json";
+
 const ProductList = () => {
     const [products, setProduct] = useState([]);
  
@@ -10,12 +11,12 @@ const ProductList = () => {
     }, []);
  
     const getProducts = async () => {
-        const response = await axios.get('http://127.0.0.1:8001/products');
+        const response = await axios.get(configData.API_BASE_URL + '/products');
         setProduct(response.data);
     }
  
     const deleteProduct = async (id) => {
-        await axios.delete(`http://127.0.0.1:8001/products/${id}`);
+        await axios.delete(configData.API_BASE_URL + `/products/${id}`);
         getProducts();
     }
  
