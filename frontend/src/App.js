@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ProductList from "./components/ProductList";
-import AddProduct from "./components/AddProduct";
-import EditProduct from "./components/EditProduct";
+import EmployeeList from "./components/EmployeeList";
+import AddEmployee from "./components/AddEmployee";
+import EditEmployee from "./components/EditEmployee";
  
 function App() {
   return (
@@ -10,9 +10,9 @@ function App() {
       <div className="columns">
         <div className="column is-half is-offset-one-quarter">
           <Routes>
-            <Route exact path="/" caseSensitive={false}  element={<ProductList/>} />
-            <Route path="/add" element={<AddProduct />}/>
-            <Route path="/edit/:id" element={<EditProduct />}/>
+            <Route exact path="/" caseSensitive={false}  element={<EmployeeList/>} />
+            <Route path="/add" element={<AddEmployee />}/>
+            <Route path="/edit/:id" element={<EditEmployee />}/>
           </Routes>
         </div>
       </div>
