@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
  
-const db = new Sequelize('mern_db', 'root', '', {
+const db = new Sequelize('employee', 'admin', '', {
     host: "localhost",
     dialect: "mysql"
 });
