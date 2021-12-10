@@ -18,7 +18,7 @@ a2ensite apache-app.conf
 a2dissite 000-default.conf
 a2enmod rewrite
 systemctl reload apache2
-sudo apachectl configtest
+apachectl configtest
 
 cd ../backend
 
