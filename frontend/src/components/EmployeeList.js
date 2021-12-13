@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import { Link } from "react-router-dom";
-import configData from "../frontend.config.json";
 
 const EmployeeList = () => {
     const [employees, setEmployee] = useState([]);
@@ -11,12 +10,12 @@ const EmployeeList = () => {
     }, []);
  
     const getEmployees = async () => {
-        const response = await axios.get(configData.API_BASE_URL + '/employees');
+        const response = await axios.get('/employees');
         setEmployee(response.data);
     }
  
     const deleteEmployee = async (id) => {
-        await axios.delete(configData.API_BASE_URL + `/employees/${id}`);
+        await axios.delete(`/employees/${id}`);
         getEmployees();
     }
  

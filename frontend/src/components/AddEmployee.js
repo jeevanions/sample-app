@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import configData from "../frontend.config.json";
 
 const AddEmployee = () => {
     const [firstName, setFirstName] = useState('');
@@ -12,7 +11,7 @@ const AddEmployee = () => {
  
     const saveEmployee = async (e) => {
         e.preventDefault();
-        await axios.post(configData.API_BASE_URL + '/employees',{
+        await axios.post('/employees',{
             firstName: firstName,
             lastName: lastName,
             salary:salary
