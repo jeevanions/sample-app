@@ -2,15 +2,19 @@
 [Unit]
 Description=Backend
 After=network.target
-StartLimitIntervalSec=0
 
 [Service]
 Type=simple
 Restart=always
-RestartSec=1
-User=root
-Group=root
+User=ubuntu
+WorkingDirectory=/opt/app/backend/
 ExecStart=node  /opt/app/backend/index.js
+StandardOutput=append:/opt/app/backend/StandardOutput.log
+StandardError=append:/opt/app/backend/StandardError.log
+Environment="DB_HOST=__DB_HOST__"
+Environment="DB_USER_NAME=__USERNAME__"
+Environment="DB_PASSWORD=__PASSWORD__"
+Environment="export DB_NAME=__DBNAME__"
 
 [Install]
 WantedBy=multi-user.target
