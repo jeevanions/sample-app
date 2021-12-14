@@ -9,7 +9,6 @@ git clone https://github.com/jeevanions/sample-app.git app
 
 # Build frontend and place the app in apache server folder
 
-
 cd /opt/app/frontend
 npm install
 npm run-script build
@@ -26,3 +25,7 @@ npm install
 
 # Move the service file to systemd and enable at startup
 
+# Replace secrets in the .env file
+systemctl start backend
+
+systemctl enable backend
