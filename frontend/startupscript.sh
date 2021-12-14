@@ -16,16 +16,29 @@ cp apache-app.conf /etc/apache2/sites-available/
 a2ensite apache-app.conf
 a2dissite 000-default.conf
 a2enmod rewrite
-systemctl reload apache2
+a2enmod proxy
+a2enmod proxy_http
+a2enmod proxy_balancer
+a2enmod lbmethod_byrequests
 apachectl configtest
+
+systemctl reload apache2
+systemctl restart apache2
+
 
 cd ../backend
 
 npm install
 
-# Move the service file to systemd and enable at startup
-
 # Replace secrets in the .env file
-systemctl start backend
+sed -i 's/__DB_HOST__/<ENTER YOUR DB HOST>/g' .env
+sed -i 's/__USERNAME__/<ENTER YOUR DB USERNAME>/g' .env
+sed -i 's/__PASSWORD__/<ENTER YOUR DB PASSWORD>/g' .env
+sed -i 's/__DBNAME__/<ENTER YOUR DB NAME>/g' .env
 
+# Move the service file to systemd and enable at startup
+cp backend.service /etc/systemd/system/backend.service
+
+# Run and enable backend service
+systemctl start backend 
 systemctl enable backend
