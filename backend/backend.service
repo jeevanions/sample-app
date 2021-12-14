@@ -2,11 +2,14 @@
 [Unit]
 Description=Backend
 After=network.target
-StartLimitIntervalSec=0[Service]
+StartLimitIntervalSec=0
+
+[Service]
 Type=simple
 Restart=always
 RestartSec=1
-User=centos
+User=root
+Group=root
 ExecStart=node  /opt/app/backend/index.js
 
 [Install]
