@@ -23,6 +23,6 @@ apachectl configtest
 cd ../backend
 
 npm install
-npm install -g pm2
-pm2 start index.js
-pm2 startup ubuntu
+
+# Move the service file to systemd and enable at startup
+
